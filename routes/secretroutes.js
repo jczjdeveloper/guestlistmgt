@@ -43,47 +43,4 @@ router.all('/*', function(req, res, next){
 //router.get('/guest', eventController.getGuest);
 
 
-// // CRUD for EVENT data
-//
-// /*
-//  *  List guests
-//  */
-// router.get('/event', (req, res, next) => {
-//   res.json(eventController.list());
-// });
-//
-// /*
-//  *  Create guest
-//  */
-// router.post('/event', (req, res, next) => {
-//   const newGuest = eventController.create(req.body);
-//   res.json(newGuest);
-// });
-//
-// /*
-//  *  Get guest
-//  */
-//  router.get('/:id', (req, res, next) => {
-//    const guestId = req.params.id;
-//    res.json(eventController.get(guestId));
-//  });
-//
-//  /*
-//   *  Update guest
-//   */
-//   router.put('/', (req, res, next) => {
-//     const newGuest = eventController.update(req.body);
-//     res.json(newGuest);
-//   });
-//
-//   /*
-//    *  Delete guest
-//    */
-//    router.delete('/:id', (req, res, next) => {
-//      const guestId = req.params.id;
-//      res.json(eventController.delete(guestId));
-//    });
-
-
-
 module.exports = router;

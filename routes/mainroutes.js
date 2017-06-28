@@ -8,11 +8,7 @@ const passportConfig = require('../config/passport');
  * Controllers (route handlers).
  */
 const indexController = require('../controllers/index');
-//const pricingController = require('../controllers/pricing');
-//const featuresController = require('../controllers/features');
-//const aboutController = require('../controllers/about');
 const userController = require('../controllers/user');
-//const contactController = require('../controllers/contact');
 const apiController = require('../controllers/api');
 const contactController = require('../controllers/contact')
 
@@ -20,9 +16,6 @@ const contactController = require('../controllers/contact')
  * Primary app routes.
  */
 router.get('/', indexController.index);
-// router.get('/pricing', pricingController.getPricing);
-// router.get('/features', featuresController.getFeatures);
-// router.get('/about', aboutController.getAbout);
 router.get('/login', userController.getLogin);
 router.post('/login', userController.postLogin);
 router.get('/logout', userController.logout);

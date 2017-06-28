@@ -11,7 +11,7 @@ const apiController = require('../controllers/api');
 router.get('/', apiController.getApi);
 router.get('/facebook', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
 router.get('/linkedin', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getLinkedin);
-router.get('/instagram', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getInstagram);
+// router.get('/instagram', passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getInstagram);
 router.get('/lob', apiController.getLob);
 router.get('/upload', apiController.getFileUpload);
 router.post('/upload', upload.single('myFile'), apiController.postFileUpload);

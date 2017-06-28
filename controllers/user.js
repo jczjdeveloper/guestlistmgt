@@ -2,7 +2,7 @@ const bluebird = require('bluebird');
 const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
-const User = require('../models/user');
+const User = require('../models/User');
 
 /**
  * GET /login
@@ -10,9 +10,9 @@ const User = require('../models/user');
  */
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect('/dashboard');
+    return res.redirect('/');
   }
-  res.render('account/login', {
+  res.render('/login', {
     title: 'Login'
   });
 };
@@ -42,7 +42,7 @@ exports.postLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err); }
       req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo || '/pricing');
+      res.redirect(req.session.returnTo || '/');
     });
   })(req, res, next);
 };
@@ -62,7 +62,7 @@ exports.logout = (req, res) => {
  */
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect('/dashboard');
+    return res.redirect('/');
   }
   res.render('account/signup', {
     title: 'Create Account',

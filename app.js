@@ -4,7 +4,7 @@ const Debug = require('debug');
 const express = require('express');
 const session = require('express-session');
 const dotenv = require('dotenv');
-require('dotenv').config({silent: true});
+//require('dotenv').config({silent: true});
 const MongoStore = require('connect-mongo')(session);
 // comment out logger if unable to deploy on heroku?
 //const logger = require('morgan');
