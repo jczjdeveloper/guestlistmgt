@@ -2,7 +2,7 @@ const bluebird = require('bluebird');
 const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
-const User = require('../models/User');
+const User = require('../models/user');
 
 /**
  * GET /login
@@ -12,7 +12,8 @@ exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect('/');
   }
-  res.render('/login', {
+  console.log('get login')
+  res.render('account/login', {
     title: 'Login'
   });
 };

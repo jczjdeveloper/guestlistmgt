@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const Debug = require('debug');
 const express = require('express');
 const session = require('express-session');
+const chalk = require('chalk');
 const dotenv = require('dotenv');
 //require('dotenv').config({silent: true});
 const MongoStore = require('connect-mongo')(session);
@@ -77,7 +78,19 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+/**
+ * ROUTES
+ */
+
+const api = require('./routes/api')
+const auth = require('./routes/auth')
+const mainRoutes = require('./routes/mainroutes')
+const secretRoutes = require('./routes/secretroutes')
+
+app.use('/api', api)
+app.use('/auth', auth)
+app.use('/', mainRoutes)
+app.use('/dashboard', secretRoutes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -97,19 +110,6 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-/**
- * ROUTES
- */
-
-const api = require('./routes/api')
-const auth = require('./routes/auth')
-const mainRoutes = require('./routes/mainroutes')
-const secretRoutes = require('./routes/secretroutes')
-
-app.use('/api', api)
-app.use('/auth', auth)
-app.use('/', mainRoutes)
-app.use('/dashboard', secretRoutes)
 
 
 
@@ -122,14 +122,14 @@ app.use('/dashboard', secretRoutes)
 /**
  * Start Express server.
  */
-// app.listen(app.get('port'), () => {
-//   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env')); 
-//   console.log('  Press CTRL-C to stop\n');
-// });
-const port = 3000;
-app.listen(port, function() {
-  console.log("Guest list running on port " + port);
-})
+app.listen(app.get('port'), () => {
+  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env')); 
+  console.log('  Press CTRL-C to stop\n');
+});
+// const port = 3000;
+// app.listen(port, function() {
+//   console.log("Guest list running on port " + port);
+// })
 
 
 module.exports = app;
